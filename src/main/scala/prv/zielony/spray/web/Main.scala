@@ -15,9 +15,9 @@ object Main extends App with SimpleRoutingApp {
 
   startServer("localhost", 9990) {
     path("monitoring") {
-      getFromResource("web/index.html")
+      getFromFile("web/index.html")
     } ~ {
-      getFromResourceDirectory("web")
+      getFromDirectory("web")
     } ~
     path("monitoring" / Segment) { id =>
       respondWithMediaType(`application/json`) {
